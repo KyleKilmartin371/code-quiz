@@ -10,18 +10,15 @@
 
 <body>
     <header class="header">
-        <a href="highscore" class="score-link">High Score</a>
-        <p class="title">Code Quiz</p>
+        <a href="./highscore.html" class="score-link">High Score</a>
 
         <!--timer-->
-         <div id="timer">
-              <div id="counter"></div>
-              <div id="btimeGuage"></div>
-              <div id="timeGuage"></div>
-         </div>
+         <div id="counter"> Time: <span id="time">0</span></div>
     </header>  
     
     <div id="container">
+        <div class="title">Code Quiz</div>
+        <br>
         <div id="start">Start Quiz!</div>
         <div id="quiz" style="display:none">
             <div id="question"></div>
@@ -35,9 +32,11 @@
 
             </div>
 
-            <!--answer bar-->
+            <!--right/ wrong bar-->
             <div id="answer"></div>
         </div>
+        <!--Html for end screen class="hide"-->
+        <a href="./highscore.html" class="hide"></a>
     </div>
     
     <script src="./assets/script.js"></script>

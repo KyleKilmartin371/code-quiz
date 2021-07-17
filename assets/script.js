@@ -7,11 +7,13 @@ var choiceA = document.getElementById("choiceAA");
 var choiceB = document.getElementById("choiceBB");
 var choiceC = document.getElementById("choiceCC");
 var choiceD = document.getElementById("choiceDD");
-var counter = document.getElementById("counter")
+var counterEl = document.getElementById("counter");
+var timerEl = document.getElementById("time"); 
 var timeGuage = document.getElementById("timeGuage");
 var answer = document.getElementById("answer");
 var scoreDiv = document.getElementById("scoreContainer");
 var score = 0;
+var timerId;
 
 //questions
 
@@ -56,25 +58,37 @@ var questions = [
     correct : "choiceDD"
 }
 ];
-
+var time = questions.length * 15;
 start.addEventListener("click", startQuiz);
 
 var lastQuestion = question.length - 1;
 var runningQuestion = 0;
-//counter
 var count = 0;
-var questionTime = 10;
-var gauageUnit = questionTime;
-var TIMER;
+
+function quizEnd() {
+    clearInterval(timerId);
+    console.log("done!");
+
+}
+
+function startCountdown() {
+     time--;
+     timerEl.textContent = time;
+
+        if (time <= 0) {
+          quizEnd();  
+        }
+}
+
 
 //start quiz
 function startQuiz() {
 start.style.display = "none";
 renderQuestion();
 quiz.style.display = "block";
-renderCounter();
-TIMER = setInterval(renderCounter, 1000);
-};
+timerId = setInterval(startCountdown, 1000);
+}
+
 
 function renderQuestion(){
    if(questions[runningQuestion]){ let q = questions[runningQuestion];
@@ -84,21 +98,19 @@ function renderQuestion(){
     choiceA.innerHTML = q.choiceAA;
     choiceB.innerHTML = q.choiceBB;
     choiceC.innerHTML = q.choiceCC;
-    choiceD.innerHTML = q.choiceDD;}
-    else{
-        window.location.href = "./highscore.html";
+    choiceD.innerHTML = q.choiceDD;
     }
 };
 
-function renderCounter() {
-    if(count <= questionTime){
-        counter.innerHTML = count;
-        timeGuage.style.width = count * gauageUnit;
-    }
-    else{
-        count = 0;
-    }
-};
+function questionClick() {
+    /*check to see if answer are right or wrong 
+    if statement for wrong take away time from timer
+     quiz end will display high score */
+    /*Feedback for right or wrong (setTimeEl) to disapear after a second*/
+    /*increment quesiton counter [runningQuestion]= questions.length*/
+    /* check to see if at end of questions */
+
+}
 
 choiceA.addEventListener("click", function(event){
     let q = questions[runningQuestion]; 
@@ -258,5 +270,6 @@ choiceD.addEventListener("click", function(event){
 // function scoreRender(){
 //     ServiceWorkerContainer.style.display = "block";
 //     let scorePerCent = Math.round(100 * score/ questions.length);
-
 // }
+
+// 
