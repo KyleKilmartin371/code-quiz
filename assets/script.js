@@ -57,9 +57,24 @@ var questions = [
 }
 ];
 
+start.addEventListener("click", startQuiz);
 
 var lastQuestion = question.length - 1;
 var runningQuestion = 0;
+//counter
+var count = 0;
+var questionTime = 10;
+var gauageUnit = questionTime;
+var TIMER;
+
+//start quiz
+function startQuiz() {
+start.style.display = "none";
+renderQuestion();
+quiz.style.display = "block";
+renderCounter();
+TIMER = setInterval(renderCounter, 1000);
+};
 
 function renderQuestion(){
    if(questions[runningQuestion]){ let q = questions[runningQuestion];
@@ -72,6 +87,16 @@ function renderQuestion(){
     choiceD.innerHTML = q.choiceDD;}
     else{
         //go to high score page
+    }
+};
+
+function renderCounter() {
+    if(count <= questionTime){
+        counter.innerHTML = count;
+        timeGuage.style.width = count * gauageUnit;
+    }
+    else{
+        count = 0;
     }
 };
 
@@ -136,17 +161,15 @@ choiceD.addEventListener("click", function(event){
     }
 })
 
-start.style.display = "none";
-renderQuestion();
-quiz.style.display = "block";
 
-//render progress
-function renderProgress (){
-    for(let qIndex = 0; qIndex <= lastQuestion;
-        qIndex++){
-            ProgressEvent.innerHTML += "<div class ='prog' id=" + qIndex + "></div>";
-        }
-}
+
+// //render progress
+// function renderProgress (){
+//     for(let qIndex = 0; qIndex <= lastQuestion;
+//         qIndex++){
+//             ProgressEvent.innerHTML += "<div class ='prog' id=" + qIndex + "></div>";
+//         }
+// }
 
 
 
