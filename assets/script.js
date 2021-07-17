@@ -86,7 +86,7 @@ function renderQuestion(){
     choiceC.innerHTML = q.choiceCC;
     choiceD.innerHTML = q.choiceDD;}
     else{
-        //go to high score page
+        window.location.href = "./highscore.html";
     }
 };
 
@@ -159,7 +159,9 @@ choiceD.addEventListener("click", function(event){
         runningQuestion++;
         renderQuestion();
     }
-})
+});
+
+
 
 
 
