@@ -14,6 +14,8 @@ var answer = document.getElementById("answer");
 var scoreDiv = document.getElementById("scoreContainer");
 var score = 0;
 var timerId;
+var highScore = [];
+var addHighScore = document.getElementById("addHighScore");
 
 //questions
 
@@ -102,16 +104,6 @@ function renderQuestion(){
     }
 };
 
-function questionClick() {
-    /*check to see if answer are right or wrong 
-    if statement for wrong take away time from timer
-     quiz end will display high score */
-    /*Feedback for right or wrong (setTimeEl) to disapear after a second*/
-    /*increment quesiton counter [runningQuestion]= questions.length*/
-    /* check to see if at end of questions */
-
-}
-
 choiceA.addEventListener("click", function(event){
     let q = questions[runningQuestion]; 
     console.log(event.target.id);
@@ -153,6 +145,7 @@ choiceC.addEventListener("click", function(event){
         renderQuestion();
     }
     else{
+        time -= 10;
         runningQuestion++;
         renderQuestion();
     }
@@ -173,7 +166,16 @@ choiceD.addEventListener("click", function(event){
     }
 });
 
+function questionClick() {
+    /*check to see if answer are right or wrong 
+    if statement for wrong take away time from timer
+     quiz end will display high score */
 
+    /*Feedback for right or wrong (setTimeEl) to disapear after a second*/
+    /*increment quesiton counter [runningQuestion]= questions.length*/
+    /* check to see if at end of questions */
+
+}
 
 
 

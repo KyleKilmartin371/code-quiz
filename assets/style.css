@@ -1,0 +1,11 @@
+.frame{
+    padding: 50px 500px;
+    font-size: large;
+}
+
+.choice{
+    background-color: magenta;
+    padding: 5px;
+    border: solid 5px white;
+    border-radius: 10px;
+}
